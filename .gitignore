@@ -1,0 +1,12 @@
+# IDEs
+.idea/
+.vscode/
+__pycache__/
+
+# Compilados y binarios
+out/
+*.exe
+*.class
+
+# Entornos virtuales
+venv/
