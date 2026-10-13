@@ -88,7 +88,6 @@ int main() {
             }
         }
 
-        // Medir el pico de memoria residente
         PROCESS_MEMORY_COUNTERS pmc;
         if (GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc))) {
             double pico_mb = pmc.PeakWorkingSetSize / (1024.0 * 1024.0);

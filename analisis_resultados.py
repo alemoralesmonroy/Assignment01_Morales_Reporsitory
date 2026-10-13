@@ -1,6 +1,5 @@
 import numpy as np
 
-# Datos recopilados durante el benchmark (en segundos)
 resultados = {
     "Python": {
         100: [0.537602, 0.524009, 0.500207, 0.496585, 0.494597],

@@ -30,7 +30,7 @@ def multiplicar_matrices(n, A, B):
 if __name__ == "__main__":
     secuencia_n = [100, 250, 500, 1000]
     directorio_actual = os.path.dirname(os.path.abspath(__file__))
-    tiempo_limite = 120.0  # Presupuesto de tiempo declarado (segundos)
+    tiempo_limite = 120.0
 
     for n in secuencia_n:
         print(f"\n--- Evaluando tamaño n={n} ---")
@@ -44,7 +44,6 @@ if __name__ == "__main__":
         tiempos = []
         timeout_alcanzado = False
 
-        # Iniciar herramienta de medición de memoria
         tracemalloc.start()
 
         for repeticion in range(5):
@@ -52,20 +51,17 @@ if __name__ == "__main__":
             tiempos.append(tiempo)
             print(f"Repetición {repeticion + 1} - Tiempo Python: {tiempo:.6f} s")
 
-            # Comprobar límite de tiempo
             if tiempo > tiempo_limite:
                 print(f"TIMEOUT: La ejecución superó el límite de {tiempo_limite}s.")
                 timeout_alcanzado = True
                 break
 
-        # Capturar la métrica de memoria y detener la herramienta
         _, peak_memory = tracemalloc.get_traced_memory()
         tracemalloc.stop()
 
         pico_mb = peak_memory / (1024 * 1024)
         print(f"Métrica de Memoria (tracemalloc pico): {pico_mb:.2f} MB")
 
-        # Si hay timeout, abortar los tamaños superiores como indica el protocolo
         if timeout_alcanzado:
             print(f"Abortando prueba de tamaños mayores debido a timeout en n={n}.")
             break

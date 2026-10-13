@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 
 public class MatrixMult {
 
-    // Lector de CSV básico para matrices cuadradas
     public static double[][] leerCSV(String filename, int n) throws IOException {
         double[][] matriz = new double[n][n];
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -25,7 +24,6 @@ public class MatrixMult {
         return matriz;
     }
 
-    // Algoritmo clásico O(n^3) requerido
     public static double[][] multiplicarMatrices(int n, double[][] A, double[][] B) {
         double[][] C = new double[n][n];
         for (int i = 0; i < n; i++) {
@@ -75,7 +73,6 @@ public class MatrixMult {
                     }
                 }
 
-                // Forzar recolección de basura y medir memoria del Heap
                 Runtime runtime = Runtime.getRuntime();
                 runtime.gc();
                 long memoriaUsada = runtime.totalMemory() - runtime.freeMemory();
