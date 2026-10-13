@@ -11,7 +11,7 @@ This repository contains the source code and reproducibility materials for Assig
 - **CPU:** Intel Core i7-10400F
 - **RAM:** 16 GB
 - **Languages & Compilers:**
-  - Python 3.x
+  - Python 3.14.0
   - Java JDK 21
   - C Compiler: MSVC (`cl.exe`)
 
