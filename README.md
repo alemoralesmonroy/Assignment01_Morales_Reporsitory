@@ -8,7 +8,7 @@ This repository contains the source code and reproducibility materials for Assig
 
 ## Environment Details
 - **OS:** Windows
-- **CPU:** Intel Core i7-10400F
+- **CPU:** Intel Core i7-10750H
 - **RAM:** 16 GB
 - **Languages & Compilers:**
   - Python 3.14.0
@@ -19,11 +19,18 @@ This repository contains the source code and reproducibility materials for Assig
 - Python: `numpy` (used exclusively for correctness validation).
   ```bash
   pip install numpy
+  ```
+- Python: `matplotlib` (used for performance visualization).
+  ```bash
+  pip install matplotlib
+  ```
   
 ## Repository Structure
 - `generador_matrices.py`: Python script that generates the square matrices with random 64-bit float values and saves them as CSV files. It uses fixed seeds (42 and 43) to guarantee the reproducibility of the inputs.
 - `validacion_correccion.py`: Script that uses `numpy` as a baseline reference to mathematically validate the custom $O(n^3)$ algorithm, applying strict absolute and relative tolerances ($10^{-9}$) to account for floating-point arithmetic.
 - `analisis_resultados.py`: Python script to compute statistical metrics (median and interquartile range) from the raw benchmark execution data.
+- `generar_grafica.py`: Python script utilizing `matplotlib` to generate the execution time plot.
+- `performance_plot.png`: The generated chart visualizing the $O(n^3)$ time complexity and JIT vs. AOT performance crossover.
 - `/inputs`: Directory containing the generated CSV matrix files used across all three languages.
 - `/Python`: Directory containing `matrix_mult.py`, the Python implementation of the benchmark, including time tracking and peak memory profiling (`tracemalloc`).
 - `/Java`: Directory containing `MatrixMult.java`, which includes the algorithm implementation, JIT warm-up iterations, and `Runtime` heap memory profiling.
@@ -62,3 +69,8 @@ cd C
 cl.exe /02 matrix_mult.c
 .\matrix_mult.exe
 ```
+
+### 5. Plot generation
+To generate the performance visualization chart after obtaining the benchmark data:
+```bash
+python generar_grafica.py
